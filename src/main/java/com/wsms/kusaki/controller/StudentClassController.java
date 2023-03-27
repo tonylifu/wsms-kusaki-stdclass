@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class StudentClassController {
     private final StudentClassModel studentClassModel;
 
-    @PostMapping("/students")
+    @RequestMapping(value = "/students", method = RequestMethod.POST,
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.ALL_VALUE},
+            consumes={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.ALL_VALUE})
+    @ResponseStatus(HttpStatus.OK)
     public Object getStudentClass(final @RequestBody GetClassStudentRequest getClassStudentRequest) {
         return studentClassModel.getStudentClass(getClassStudentRequest).fold(e -> e, r -> r);
     }

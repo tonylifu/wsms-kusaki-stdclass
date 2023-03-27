@@ -66,6 +66,11 @@ public class StudentClassService implements StudentClassModel {
         return Either.right(Boolean.TRUE);
     }
 
+    /**
+     * maps List of Students to response class
+     * @param students
+     * @return {@link ClassStudentResponse}
+     */
     private ClassStudentResponse buildStudentClassResponse(List<Student> students) {
         List<StudentResponse> studentResponses = new ArrayList<>();
         students.forEach(std -> {
