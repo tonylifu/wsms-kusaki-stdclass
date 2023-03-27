@@ -36,6 +36,7 @@ public class StudentClassConstant {
      */
     public static SchoolApiErrorResponse getSchoolApiErrorResponse(String errorMessage, String errorCode, String failureReason) {
         return SchoolApiErrorResponse.builder()
+                .isError(Boolean.TRUE)
                 .errorMessage(errorMessage)
                 .errorCode(errorCode)
                 .failureReason(failureReason)

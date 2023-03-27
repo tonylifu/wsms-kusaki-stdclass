@@ -85,6 +85,7 @@ public class StudentClassService implements StudentClassModel {
                     .build());
         });
         return ClassStudentResponse.builder()
+                .isError(Boolean.FALSE)
                 .classStudentResponse(studentResponses)
                 .build();
     }
