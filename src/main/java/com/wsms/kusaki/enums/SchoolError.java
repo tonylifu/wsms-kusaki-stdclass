@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public enum SchoolError {
 
-    CLASS_EMPTY_ERROR("0010", "class may be empty or invalid parameters have been passed"),
+    CLASS_EMPTY_ERROR("0010", "invalid class or parameter(s)"),
     SOMETHING_WENT_WRONG("0099", "something went wrong");
 
     private final String code;
