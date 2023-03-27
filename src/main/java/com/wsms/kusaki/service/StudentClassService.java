@@ -31,11 +31,12 @@ public class StudentClassService implements StudentClassModel {
         if (validateParams.isLeft()) {
             return Either.left(validateParams.getLeft());
         }
-        String assignedClass = classStudentRequest.getClassId()+classStudentRequest.getClassAlphabeth()
-                +classStudentRequest.getYear() + classStudentRequest.getTerm();
-        var students = repositoryService.getStudents(assignedClass); //studentRepository.findByEntryClassAssigned(assignedClass);
-        //log.info("students {}", students);
-        return Either.right(buildStudentClassResponse(students));
+        String assignedClass = String.format("%s"+"%s"+"%s"+"%s",
+                classStudentRequest.getClassId(), classStudentRequest.getClassAlphabeth(),
+                classStudentRequest.getYear(),classStudentRequest.getTerm());
+
+        return repositoryService.getStudents(assignedClass)
+                .map(this::buildStudentClassResponse);
     }
 
     private Either<SchoolApiErrorResponse, Boolean> validateGetStudentParams(GetClassStudentRequest classStudentRequest) {
